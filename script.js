@@ -1,4 +1,4 @@
-// Først finn form elementet
+// Først finne form elementet
 /** Hjelper javascript å forstå at dette skal operere med et HTMLelement og gir da alle relevante kommandoer
  *  @type {HTMLFormElement}
  */
@@ -33,26 +33,82 @@ inputForm.addEventListener("submit", (event)=>{
  * @param {number} number 
  * @returns 
  */
-function collatz(number) {
-    // Noe logikk
-    console.log(number)
+function collatzA(number) {
+    // Avslutt hvis tallet er 1
+    if (number === 1) {
+        console.log(number + " is final")
+        return
+    }
+    // finne ut om tallet er partall eller oddetall
+    const isEven = (number % 2) === 0
 
-    const newNumber = number - 1
+    if (isEven) {
+        // Partalls logikk
+        console.log(number + " is even")
 
-    if (isEven(number)) {
-        return newNumber
+        number = number / 2
     } else {
-        // Rekursjon
-        return collatz(newNumber)
+        // Oddetalls logikk
+        console.log(number + " is odd")
+
+        number = (number * 3) + 1
+    }
+
+    // Gå igjennom algoritmen på nytt (via rekursjon)
+    collatz(number)
+}    
+
+function collatzB(number) {
+    // Avslutt hvis tallet er 1
+    while (number > 1) {
+    // finne ut om tallet er partall eller oddetall
+    const isEven = (number % 2) === 0
+
+    if (isEven) {
+        // Partalls logikk
+        console.log(number + " is even")
+
+        number = number / 2
+    } else {
+        // Oddetalls logikk
+        console.log(number + " is odd")
+
+        number = (number * 3) + 1
     }
 }
 
-function isEven(number) {
-    return number % 2 === 0
-}
+    // Gå igjennom algoritmen på nytt (via rekursjon)
+    collatz(number)
+}   
+   
+const numberA = 13
+collatzB(numberA)
 
-function createElement(number) {
-    const element = document.createElement("li")
-    element.textContent = number
-    return element
-}
+// Noe logikk
+//     console.log(number)
+
+//    const newNumber = number - 1
+
+//if (newNumber <= 0) {
+        //return newNumber
+  //  } else {
+        // Rekursjon, 
+      //  return collatz(newNumber)
+    //}
+
+
+//function isEven (number) {
+  //  return number % 2 === 0
+// } 
+
+//function isOdd (number) {
+  //  return number % 2 === 1
+//}
+    
+
+
+//function createElement(number) {
+  //  const element = document.createElement("li")
+    //element.textContent = number
+    //return element
+//}
